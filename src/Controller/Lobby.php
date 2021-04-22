@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Controller;
 
+use App\Domain\Exceptions\NotFoundPlayersException;
 use App\Entity\User;
 use App\Repository\LobbyRepository;
 use App\Entity\Lobby as BaseLobby;
@@ -21,7 +22,9 @@ class Lobby
             $lobbyRepository->persist($lobby);
         }
 
-        if (!$lobby->isInLobby($user->getPlayer())) {
+        try {
+            $lobby->isInLobby($user->getPlayer());
+        } catch(NotFoundPlayersException) {
             /** @var User $user */
             $lobby->addPlayer($user->getPlayer());
             $lobbyRepository->flush();

@@ -22,7 +22,8 @@
             {% if is_granted('IS_AUTHENTICATED_FULLY') %}
                 {{ app.user.username }}<br/>
                 {{ app.user.ratio }}<br/>
-                <a href="{{ path('app_logout') }}">Se déconnecter</a>
+                <a href="{{ path('app_logout') }}">Se déconnecter</a><br/>
+                <a href="{{ path('lobby') }}">Rejoindre le Lobby</a>
             {% endif %}
 
             {% if is_granted('IS_ANONYMOUS') %}

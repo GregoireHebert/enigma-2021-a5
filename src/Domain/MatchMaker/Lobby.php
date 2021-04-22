@@ -22,15 +22,15 @@ use App\Domain\MatchMaker\Player\QueuingPlayer;
 
 class Lobby implements LobbyInterface
 {
-    /** @var array<QueuingPlayer> */
-    public array $queuingPlayers = [];
-    /** @var array<Encounter> */
-    public array $encounters = [];
+    /** @var iterable<QueuingPlayer> */
+    public iterable $queuingPlayers = [];
+    /** @var iterable<Encounter> */
+    public iterable $encounters = [];
 
     /**
      * @return array<InLobbyPlayerInterface>
      */
-    protected function findOponents(InLobbyPlayerInterface $player): array
+    protected function findOponents(InLobbyPlayerInterface $player): iterable
     {
         $minLevel = round($player->getRatio() / 100);
         $maxLevel = $minLevel + $player->getRange();

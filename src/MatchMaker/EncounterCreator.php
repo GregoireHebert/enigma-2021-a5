@@ -15,6 +15,5 @@ class EncounterCreator
     public function createEncounters(): void
     {
         $this->lobby->createEncounters();
-        dd($this->lobby);
     }
 }

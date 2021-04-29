@@ -21,6 +21,11 @@ class QueuingPlayerRepository extends ServiceEntityRepository
         $this->_em->persist($queuingPlayer);
     }
 
+    public function remove(QueuingPlayer $queuingPlayer): void
+    {
+        $this->_em->remove($queuingPlayer);
+    }
+
     public function flush(): void
     {
         $this->_em->flush();

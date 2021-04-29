@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\MatchMaker;
 
+use App\Domain\Exceptions\NotFoundPlayersException;
 use App\Domain\MatchMaker\Encounter\Encounter as DomainEncounter;
 use App\Domain\MatchMaker\Lobby as BaseLobby;
 use App\Domain\MatchMaker\Player\InLobbyPlayerInterface;
@@ -35,15 +36,24 @@ class Lobby extends BaseLobby
     {
         parent::createEncounterForPlayer($player);
 
-        foreach ($this->encounters as $encounter) {
-            if ($encounter instanceof DomainEncounter) {
+        foreach ($this->encounters as $key => $encounter) {
+            if (!$encounter instanceof EntityEncounter) {
                 $entityEncounter = new EntityEncounter();
                 $entityEncounter->playerA = $encounter->playerA;
                 $entityEncounter->playerB = $encounter->playerB;
                 $this->encounterRepository->persist($entityEncounter);
+                $this->encounters[$key] = $entityEncounter;
             }
         }
 
         $this->encounterRepository->flush();
+    }
+
+    public function removePlayer(PlayerInterface $player): void
+    {
+        $this->queuingPlayerRepository->remove($player);
+        $this->queuingPlayerRepository->flush();
+
+        parent::removePlayer($player);
     }
 }

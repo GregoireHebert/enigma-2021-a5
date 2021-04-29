@@ -21,7 +21,9 @@ class Lobby
             $lobby->isInLobby($user->getPlayer());
         } catch(NotFoundPlayersException) {
             /** @var User $user */
-            $lobby->addPlayer($user->getPlayer());
+            if (!$lobby->isPlaying($user->getPlayer())) {
+                $lobby->addPlayer($user->getPlayer());
+            }
         }
 
         return new Response(

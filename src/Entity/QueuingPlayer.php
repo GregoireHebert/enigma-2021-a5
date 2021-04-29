@@ -19,7 +19,7 @@ class QueuingPlayer extends BaseQueuingPlayer
      * @ORM\Column(type="integer")
      * @ORM\GeneratedValue(strategy="AUTO")
      */
-    public int $id;
+    public ?int $id;
 
     /**
      * @ORM\Column(type="integer")
@@ -27,8 +27,8 @@ class QueuingPlayer extends BaseQueuingPlayer
     protected int $range = 1;
 
     /**
-     * @ORM\OneToOne(targetEntity=Player::class, cascade={"persist", "remove"})
+     * @ORM\OneToOne(targetEntity=Player::class, cascade={"persist"})
      * @ORM\JoinColumn(nullable=false, referencedColumnName="name")
      */
-    protected PlayerInterface $player;
+    public PlayerInterface $player;
 }

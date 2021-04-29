@@ -7,9 +7,10 @@ namespace App\Entity;
 use App\Domain\MatchMaker\Player\PlayerInterface;
 use App\Domain\MatchMaker\Player\QueuingPlayer as BaseQueuingPlayer;
 use Doctrine\ORM\Mapping as ORM;
+use App\Repository\QueuingPlayerRepository;
 
 /**
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass=QueuingPlayerRepository::class)
  */
 class QueuingPlayer extends BaseQueuingPlayer
 {

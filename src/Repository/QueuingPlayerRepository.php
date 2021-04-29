@@ -2,22 +2,21 @@
 
 namespace App\Repository;
 
-use App\Domain\MatchMaker\LobbyInterface;
-use App\Entity\Lobby;
+use App\Entity\QueuingPlayer;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
 
 /**
- * @method Lobby findOneBy(array $criteria, ?array $orderBy = null)
+ * @method QueuingPlayer[] findAll()
  */
-class LobbyRepository extends ServiceEntityRepository
+class QueuingPlayerRepository extends ServiceEntityRepository
 {
     public function __construct(ManagerRegistry $registry)
     {
-        parent::__construct($registry, Lobby::class);
+        parent::__construct($registry, QueuingPlayer::class);
     }
 
-    public function persist(LobbyInterface $lobby): void
+    public function persist(QueuingPlayer $lobby): void
     {
         $this->_em->persist($lobby);
     }

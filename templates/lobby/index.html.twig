@@ -1,0 +1,12 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    {{ parent() }}
+<ul>
+    {% for player in players %}
+        <li>{{ player.name }} ({{ player.ratio }})</li>
+    {% else %}
+        <li>Aucun joueur</li>
+    {% endfor %}
+    </ul>
+{% endblock %}

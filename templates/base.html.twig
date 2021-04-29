@@ -24,6 +24,7 @@
                 {{ app.user.ratio }}<br/>
                 <a href="{{ path('app_logout') }}">Se déconnecter</a><br/>
                 <a href="{{ path('lobby') }}">Rejoindre le Lobby</a>
+                <a href="{{ path('create_encounters') }}">Créer des matchs</a>
             {% endif %}
 
             {% if is_granted('IS_ANONYMOUS') %}

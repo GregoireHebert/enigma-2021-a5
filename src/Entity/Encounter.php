@@ -32,12 +32,12 @@ class Encounter extends BaseEncounter
     protected string $status = self::STATUS_PLAYING;
 
     /**
-     * @ORM\Column(type="float")
+     * @ORM\Column(type="float", nullable=true)
      */
     public ?float $scorePlayerA = null;
 
     /**
-     * @ORM\Column(type="float")
+     * @ORM\Column(type="float", nullable=true)
      */
     public ?float $scorePlayerB = null;
 

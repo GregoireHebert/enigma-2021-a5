@@ -16,9 +16,9 @@ class EncounterRepository extends ServiceEntityRepository
         parent::__construct($registry, Encounter::class);
     }
 
-    public function persist(Encounter $lobby): void
+    public function persist(Encounter $encounter): void
     {
-        $this->_em->persist($lobby);
+        $this->_em->persist($encounter);
     }
 
     public function flush(): void

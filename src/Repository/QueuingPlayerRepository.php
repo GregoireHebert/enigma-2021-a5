@@ -16,9 +16,9 @@ class QueuingPlayerRepository extends ServiceEntityRepository
         parent::__construct($registry, QueuingPlayer::class);
     }
 
-    public function persist(QueuingPlayer $lobby): void
+    public function persist(QueuingPlayer $queuingPlayer): void
     {
-        $this->_em->persist($lobby);
+        $this->_em->persist($queuingPlayer);
     }
 
     public function flush(): void

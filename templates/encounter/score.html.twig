@@ -1,0 +1,13 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    {{ parent() }}
+
+    <h1>Saisie des scores</h1>
+    <div>
+        {{ encounter.playerA.name }} VS {{ encounter.playerB.name }}
+    </div>
+    <div>
+        {{ form(form) }}
+    </div>
+{% endblock %}

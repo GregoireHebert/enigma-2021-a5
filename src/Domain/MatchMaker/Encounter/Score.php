@@ -8,7 +8,7 @@ use App\Domain\MatchMaker\Player\PlayerInterface;
 
 class Score
 {
-    public function __construct(public PlayerInterface $player, public int $score)
+    public function __construct(public ?PlayerInterface $player = null, public ?int $score = null)
     {
     }
 }

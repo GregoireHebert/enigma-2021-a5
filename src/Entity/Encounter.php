@@ -52,4 +52,9 @@ class Encounter extends BaseEncounter
      * @ORM\JoinColumn(referencedColumnName="name")
      */
     public ?PlayerInterface $playerB = null;
+
+    public function getId(): int
+    {
+        return $this->id;
+    }
 }

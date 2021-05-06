@@ -16,7 +16,9 @@
     <ul>
         {% for encounter in encounters|matchEnCours %}
             <li>
+                <a href="{{ path('score', {'encounter': encounter.id}) }}">
                 {{ encounter.playerA.name }} ({{ encounter.playerA.ratio }}) VS {{ encounter.playerB.name }} ({{ encounter.playerB.ratio }})
+                </a>
             </li>
         {% else %}
             <li>Aucun match en cours</li>

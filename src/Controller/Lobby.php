@@ -29,7 +29,8 @@ class Lobby
         return new Response(
             $twig->render('lobby/index.html.twig',
                 [
-                    'players' => $lobby->queuingPlayers
+                    'players' => $lobby->queuingPlayers,
+                    'encounters' => $lobby->encounters
                 ]
             )
         );

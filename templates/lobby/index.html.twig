@@ -2,11 +2,35 @@
 
 {% block body %}
     {{ parent() }}
-<ul>
+
+    <h2>Joueurs en attente :</h2>
+    <ul>
     {% for player in players %}
         <li>{{ player.name }} ({{ player.ratio }})</li>
     {% else %}
         <li>Aucun joueur</li>
     {% endfor %}
+    </ul>
+
+    <h2>Matchs en cours :</h2>
+    <ul>
+        {% for encounter in encounters|matchEnCours %}
+            <li>
+                {{ encounter.playerA.name }} ({{ encounter.playerA.ratio }}) VS {{ encounter.playerB.name }} ({{ encounter.playerB.ratio }})
+            </li>
+        {% else %}
+            <li>Aucun match en cours</li>
+        {% endfor %}
+    </ul>
+
+    <h2>Matchs terminés :</h2>
+    <ul>
+        {% for encounter in encounters|matchTerminé %}
+            <li>
+                {{ encounter.playerA.name }} ({{ encounter.playerA.ratio }}) VS {{ encounter.playerB.name }} ({{ encounter.playerB.ratio }})
+            </li>
+        {% else %}
+            <li>Aucun match terminé</li>
+        {% endfor %}
     </ul>
 {% endblock %}
